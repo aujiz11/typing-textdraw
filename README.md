@@ -79,6 +79,10 @@ ShowTypingTextDraw(playerid, myTextDraw, "Welcome to the server!");
 
 The typing animation will automatically stop when the text is fully displayed or the player disconnects.
 
+## Demo
+
+<video src="video.mp4" controls width="600"></video>
+
 ## Testing
 
 <!--
