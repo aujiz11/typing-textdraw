@@ -1,4 +1,8 @@
 // Typing-TextDraw by Aujiz
+#if defined typing_textdraw_included
+    #endinput
+#endif
+#define typing_textdraw_included
 
 #if !defined TYPING_MAX_LENGTH
     #define TYPING_MAX_LENGTH 1028
