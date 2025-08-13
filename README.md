@@ -48,6 +48,32 @@ The library provides a simple way to display a typing animation using PlayerText
 // Show a typing animation for the given player and PlayerText:id
 ShowTypingTextDraw(playerid, PlayerText:id, "Your text here");
 ```
+**Parameters for ShowTypingTextDraw:**
+- `playerid`: The player to show the typing animation to.
+- `id`: The PlayerTextDraw to update.
+- `text[]`: The text to display with typing effect.
+- `interval` (optional): Milliseconds between each character (default: TYPING_INTERVAL).
+
+**Example:**
+```pawn
+new PlayerText:myTextDraw = CreatePlayerTextDraw(playerid, ...); // create your PlayerTextDraw
+ShowTypingTextDraw(playerid, myTextDraw, "Welcome to the server!");
+```
+
+The typing animation will automatically stop when the text is fully displayed or the player disconnects.
+
+When the typing animation finishes, the following callback is called:
+
+```pawn
+public OnTypingTextDrawFinish(playerid, PlayerText:playertextid)
+{
+    // Your code here
+}
+```
+- `playerid`: The player whose animation finished.
+- `playertextid`: The PlayerTextDraw that finished typing.
+
+Use this callback to perform actions after the animation ends (e.g., show another message, hide the textdraw, etc).
 
 ### Definitions
 
@@ -64,20 +90,6 @@ Example:
 #define TYPING_INTERVAL 50
 #include <typing-textdraw>
 ```
-
-**Parameters for ShowTypingTextDraw:**
-- `playerid`: The player to show the typing animation to.
-- `id`: The PlayerTextDraw to update.
-- `text[]`: The text to display with typing effect.
-- `interval` (optional): Milliseconds between each character (default: TYPING_INTERVAL).
-
-**Example:**
-```pawn
-new PlayerText:myTextDraw = CreatePlayerTextDraw(playerid, ...); // create your PlayerTextDraw
-ShowTypingTextDraw(playerid, myTextDraw, "Welcome to the server!");
-```
-
-The typing animation will automatically stop when the text is fully displayed or the player disconnects.
 
 ## Demo
 

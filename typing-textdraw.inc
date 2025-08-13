@@ -17,6 +17,9 @@ static g_TypingIndex[MAX_PLAYERS];
 static PlayerText:g_TypingTextDraw[MAX_PLAYERS];
 static g_TypingTimer[MAX_PLAYERS];
 
+// callback when animation ends
+forward OnTypingTextDrawFinish(playerid, PlayerText:playertextid);
+
 static ResetTypingTextDraw(playerid)
 {
     g_TypingText[playerid][0] = '\0';
@@ -63,7 +66,8 @@ public TypingTextDrawTimer(playerid)
     else
     {
         KillTimer(g_TypingTimer[playerid]);
-        g_TypingTimer[playerid] = INVALID_TIMER;
+        CallLocalFunction(#OnTypingTextDrawFinish, "ii", playerid, g_TypingTextDraw[playerid]);
+        ResetTypingTextDraw(playerid);
     }
     return 1;
 }
